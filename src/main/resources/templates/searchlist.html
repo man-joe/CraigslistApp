@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Jobs</title>
+    <div th:replace="base :: head"></div>
+</head>
+<body>
+<nav th:replace="base :: navBar"></nav>
+
+<div class="card text-white bg-primary" style="width: 18rem;">
+    <div th:each="job : ${jobs}">
+        <div class="card-header" th:text="${job.title}">
+        </div>
+        <ul class="list-group list-group-flush list-group-item-primary">
+            <li class="list-group-item" th:text="${#dates.format(job.date, 'MMM-dd-yyyy')}"></li>
+            <li class="list-group-item" th:text="${job.description}"></li>
+<!--            <li class="list-group-item" th:text="${#numbers.formatDecimal(flight.price, 0, 'COMMA', 2, 'POINT')}"></li>-->
+        </ul>
+        <br>
+    </div>
+</div>
+
+<footer th:replace="base :: footer"></footer>
+<div th:replace="base :: bootstrapScripts"></div>
+</body>
+</html>
