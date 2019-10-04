@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Job {
+public class Job implements Comparable<Job>{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -69,5 +69,14 @@ public class Job {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String formattedPhone(){
+        return "(" + this.phone.substring(0,3) + ") " + this.phone.substring(3,6) + "-" + this.phone.substring(6,10);
+    }
+
+    @Override
+    public int compareTo(Job o) {
+        return this.id == o.getId() ? 0: -1;
     }
 }

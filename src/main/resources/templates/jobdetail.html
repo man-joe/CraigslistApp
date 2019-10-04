@@ -20,7 +20,7 @@
                 <p class="mb-1" th:text="${job.description}"></p>
                 <small th:text="${job.author}"></small>
                 <p>
-                    <small th:text="${job.phone}"></small>
+                    <small th:text="${job.formattedPhone()}"></small>
                 </p>
             </a>
         </div>

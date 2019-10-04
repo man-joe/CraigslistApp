@@ -6,7 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.TreeSet;
 
 @Controller
 public class HomeController {
@@ -48,7 +51,14 @@ public class HomeController {
 
     @PostMapping("/searchlist")
     public String searchResult(Model model, @RequestParam(name="search") String search) {
-        model.addAttribute("jobs" , jobRepository.findByTitleContainingIgnoreCase(search));
+        String[] split = search.split(" ");
+        HashMap<String, TreeSet<Job>> mapToAdd = new HashMap<>();
+        mapToAdd.put("jobs", new TreeSet<Job>());
+        for(String s : split)
+            for(Job j : jobRepository.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(s,s))
+                mapToAdd.get("jobs").add(j);
+
+        model.addAllAttributes(mapToAdd);
         return "searchlist";
     }
 

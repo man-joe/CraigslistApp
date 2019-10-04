@@ -3,7 +3,8 @@ package com.example.demo;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public interface JobRepository extends CrudRepository<Job, Long> {
-    ArrayList<Job> findByTitleContainingIgnoreCase(String search);
+    TreeSet<Job> findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(String search, String search2);
 }

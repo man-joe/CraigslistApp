@@ -27,7 +27,7 @@
                 <td th:text="${iter.index+1}"></td>
                 <td th:text="${job.title}"></td>
                 <td th:text="${job.author}"></td>
-                <td th:text="${job.phone}"></td>
+                <td th:text="${job.formattedPhone()}"></td>
                 <td th:text="${#dates.format(job.postedDate, 'MMM-dd-yyyy')}"></td>
                 <td th:text="${job.description}"></td>
             </tr>

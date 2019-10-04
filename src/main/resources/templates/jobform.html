@@ -39,7 +39,7 @@
 
             <div class="form-row">
                 <div class="col">
-                    <button type="submit" class="btn btn-warning">Submit</button>
+                    <button type="submit" onclick="confirmation()" class="btn btn-warning">Submit</button>
                 </div>
             </div>
         </form>
@@ -50,5 +50,6 @@
 
 <footer th:replace="base :: footer"></footer>
 <div th:replace="base :: bootstrapScripts"></div>
+<script th:src="@{/js/test.js}"></script>
 </body>
 </html>
