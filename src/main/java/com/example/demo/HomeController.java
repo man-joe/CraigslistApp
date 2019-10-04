@@ -26,16 +26,18 @@ public class HomeController {
     }
 
     @PostMapping("/process")
-    public String processForm(@ModelAttribute Job job, @RequestParam(name="date") String date){
+    public String processForm(@ModelAttribute Job job, @RequestParam(name="postedDate") String postedDate){
 
+        // Used this because date was randomly giving a ','; will keep if it shows up again,
+        // I realize that formattedDate is the same as date...
         try {
             String pattern = "yyyy-MM-dd";
-            System.out.println(date);
+//            System.out.println(postedDate);
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-            String formattedDate = date.substring(0);
-            System.out.println("formatted: " + formattedDate);
+            String formattedDate = postedDate.substring(0);
+//            System.out.println("formatted: " + formattedDate);
             Date realDate = simpleDateFormat.parse(formattedDate);
-            System.out.println(realDate.toString());
+//            System.out.println(realDate.toString());
         }
         catch (java.text.ParseException e){
             e.printStackTrace();

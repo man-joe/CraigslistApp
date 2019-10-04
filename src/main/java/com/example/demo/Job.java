@@ -15,11 +15,19 @@ public class Job {
     private long id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date date;
+    private Date postedDate;
 
     private String title, description, author, phone;
 
     public Job() {
+    }
+
+    public Date getPostedDate() {
+        return postedDate;
+    }
+
+    public void setPostedDate(Date postedDate) {
+        this.postedDate = postedDate;
     }
 
     public long getId() {
@@ -30,13 +38,6 @@ public class Job {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public String getTitle() {
         return title;

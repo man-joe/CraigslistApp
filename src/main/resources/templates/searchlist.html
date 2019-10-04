@@ -7,17 +7,33 @@
 </head>
 <body>
 <nav th:replace="base :: navBar"></nav>
-
-<div class="card text-white bg-primary" style="width: 18rem;">
-    <div th:each="job : ${jobs}">
-        <div class="card-header" th:text="${job.title}">
-        </div>
-        <ul class="list-group list-group-flush list-group-item-primary">
-            <li class="list-group-item" th:text="${#dates.format(job.date, 'MMM-dd-yyyy')}"></li>
-            <li class="list-group-item" th:text="${job.description}"></li>
-<!--            <li class="list-group-item" th:text="${#numbers.formatDecimal(flight.price, 0, 'COMMA', 2, 'POINT')}"></li>-->
-        </ul>
-        <br>
+<br>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Search Results</h1>
+        <table class="table table-sm table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Phone</th>
+                <th>Date Posted</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="job,iter : ${jobs}">
+                <td th:text="${iter.index+1}"></td>
+                <td th:text="${job.title}"></td>
+                <td th:text="${job.author}"></td>
+                <td th:text="${job.phone}"></td>
+                <td th:text="${#dates.format(job.postedDate, 'MMM-dd-yyyy')}"></td>
+                <td th:text="${job.description}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/add" class="btn btn-primary">Add Job</a>
     </div>
 </div>
 
